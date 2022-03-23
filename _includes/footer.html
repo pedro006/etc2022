@@ -1,5 +1,105 @@
-<footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <small>This project is maintained by <a href="https://www.danurbanowicz.com" rel="noopener">Dan Urbanowicz</a>. View the repo on <a href="https://github.com/danurbanowicz/jekyll-netlify-boilerplate" rel="noopener">Github</a></small>
+<script src="/assets/js/etc-v01.js" type="text/javascript"></script>
 
-</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js"></script>
+
+<script>
+  $('.menu a').on('click', function (event) {
+    var href = $(this).attr('href');
+    event.preventDefault();
+    $('.menu').removeClass('light')
+    $('.intro-load').fadeIn(300, function () {
+      location.href = href
+    });
+  })
+  //////
+  /////
+  /////
+  autosize($('textarea'));
+  $(".lightbox-link, #contactuslink").on("click", function (event) {
+    event.preventDefault()
+    var href = $(this).attr("href")
+    window.history.pushState(null, null, href)
+    $('.container').css('opacity', '0')
+    $('.etc-menu.work').fadeOut(250)
+    document.querySelector('body').style.overflow = 'hidden';
+    $.ajax({
+      url: href,
+      success: function (data) {
+        $('.lightbox-container').fadeOut(300, function () {
+          const newPage = $(data).filter(".wrapper").html()
+          $(".lightbox-container").html(newPage)
+          if ($(newPage).has('#contactform').length) {
+            console.log('contact form is here')
+            //makeWebflowFormAjax($("#email-form"))
+            autosize($('textarea'));
+          }
+          else { console.log('contact form is not here') }
+          $(".lightbox-container").fadeIn(300)
+          $('.etc-menu.close').on('click', function (e) {
+            e.preventDefault()
+            var href = $(this).attr("href")
+            window.history.pushState(null, null, href)
+            $('.lightbox-container').fadeOut(300, function () {
+              $('.container').css('opacity', '1')
+              $('.etc-menu.work').fadeIn(250)
+              document.querySelector('body').style.overflow = 'auto';
+            })
+          })
+        })
+      }
+    })
+  })
+  $(".type-lightbox a").on("click", function (event) {
+    event.preventDefault()
+    var href = $(this).attr("href")
+    window.history.pushState(null, null, href)
+    $('.container').css('opacity', '0')
+    $('.etc-menu.work').fadeOut(250)
+    $.ajax({
+      url: href,
+      success: function (data) {
+        $('.lightbox-container').fadeOut(300, function () {
+          const newPage = $(data).filter(".wrapper").html()
+          $(".lightbox-container").html(newPage)
+          $(".lightbox-container").fadeIn(300)
+          var typeSwiper = new Swiper('.swiper-container-cs', {
+            init: true,
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true
+            },
+            speed: 300,
+            autoplay: false,
+            pagination: {
+              el: '.swiper-fraction',
+              type: 'fraction'
+            },
+            navigation: {
+              nextEl: '.swiper-next-cs',
+              prevEl: '.swiper-prev-cs'
+            }
+          })
+          $('.etc-menu.close').on('click', function (e) {
+            e.preventDefault()
+            typeSwiper.destroy()
+            var href = $(this).attr("href")
+            window.history.pushState(null, null, href)
+            $('.lightbox-container').fadeOut(300, function () {
+              $('.container').css('opacity', '1')
+              $('.etc-menu.work').fadeIn(250)
+            })
+          })
+        })
+      }
+    })
+  }) 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="/assets/js/etc-slider.js"></script>

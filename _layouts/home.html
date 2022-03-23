@@ -2,22 +2,74 @@
 layout: default
 ---
 
-<h2>{{ page.title }}</h2>
+{% assign collection = site.data.homeslider | where_exp:"item", "item['Published On'] != ''" | sort: "Sorting" %}
 
-  {% include page-intro.html %}
 
-  {{ content }}
+<div style="display:block" class="intro-load"></div>
 
-  <section>
+<div class="wrapper barba-container">
+<h2 class="swiper-fraction swiper-pagination-fraction">1/23</h2>
+<div class="swiper-prev"></div>
+<div class="swiper-next"></div>
+<div class="swiper-container w-dyn-list">
+  <div role="list" class="swiper-wrapper w-dyn-items">
 
-    <h3>Recent posts from the blog</h3>
+    {% for item in collection %}
 
-    <ul>
-      {% for post in site.posts limit:3 %}
-        <li>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
+    <div role="listitem" class="swiper-slide w-dyn-item">
 
-  </section>
+      <a href="#" class="slider-text w-inline-block">
+        <h2>{{item['Name']}}</h2>{{item["Menu White"]}}
+      </a>
+      
+      {% if item["Menu White"] == true or item["Menu White"] != '' %}
+      <div class="white-menu"></div>
+      {% endif %}
+
+      {% if item["Horizontal Image"] != '' %}
+
+      <div class="desktop-img">
+        <div class="slider-content">
+        {% if item["Contain Img?"] == true %}
+            <img loading="lazy" alt="" src="{{item["Horizontal Image"]}}" class="slider-image contained">
+        {% else %}
+          <img loading="lazy" alt="" src="{{item["Horizontal Image"]}}" class="slider-image">
+        {% endif %}
+        </div>
+      </div>
+      
+      {% if item["Vertical Image"] != '' %}
+      <div class="mobile-img">
+        <div class="slider-content vertical"><img loading="lazy" alt="" src="{{item["Vertical Image"]}}" class="slider-image"></div>
+      </div>
+      {% endif %}
+
+      {% elsif item["SVG Animation"] != '' %}
+
+      <div class="slider-content svg-animation">
+        <div class="svg w-embed">
+          <lottie-player src="{{item["SVG Animation"]}}" background="transparent" style="height: 100vh; width: 100%" speed="1.5" loop=""
+            autoplay="">
+          </lottie-player>
+        </div>
+      </div>
+
+      {% elsif item["Vimeo ID"] != '' %}
+
+      <div class="slider-content video-background">
+        <div class="video w-embed w-iframe w-script">
+          <script></script>
+          <iframe src="{{item['Vimeo ID']}}?background=true" width="100%" height="100%" frameborder="0" allow="fullscreen"
+            allowfullscreen=""></iframe>
+        </div>
+      </div>
+
+      {% endif %}
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+</div>

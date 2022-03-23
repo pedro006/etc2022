@@ -1,0 +1,144 @@
+html.w-editor:after {
+    display: none !important;
+}
+
+.rich_text ul {
+    padding-left: 2.75vw;
+}
+
+::selection {
+    background: #ffffff00;
+    text-shadow: none;
+    color: #0065ff;
+}
+
+.content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+:-ms-input-placeholder,
+::-ms-input-placeholder,
+::placeholder {
+    color: black;
+    opacity: 1;
+}
+
+p::selection {
+    color: black;
+    background: #fff0;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.light>.menu-link {
+    border-color: #fff;
+    color: #fff;
+}
+
+.light>.asterik {
+    background-image: url("https://uploads-ssl.webflow.com/5e22087e7e74af84a5e2b3cc/5e22087e7e74af09abe2b3fe_asterik-white.svg");
+}
+
+.white-circle {
+    background-color: #fff !important;
+}
+
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.pace-inactive {
+    display: none;
+}
+
+.w-richtext figure {
+    position: relative;
+    max-width: 100%;
+}
+
+.pace .pace-progress {
+    background: #000;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2px;
+}
+
+.white-text {
+    color: #fff !important;
+}
+
+* {
+    cursor: url("https://uploads-ssl.webflow.com/5db1e0797abe5c482bc85495/5dbb04ef0775d43c599011a8_cursor30px.svg") 15 15, auto !important;
+    cursor: -webkit-image-set(url('https://uploads-ssl.webflow.com/5db1e0797abe5c482bc85495/5dbb04ef0775d43c599011a8_cursor30px.svg') 1x, url('https://uploads-ssl.webflow.com/5db1e0797abe5c482bc85495/5db1e6d47ffdd412be70a97c_Oval.svg') 2x) 15 15, auto !important;
+    outline-style: none !important;
+}
+
+* .menu.light .menu-link,
+* .white-cursor,
+* .white-text {
+    cursor: url("https://uploads-ssl.webflow.com/5db1e0797abe5c482bc85495/5dbb0541285ec24e3e57481d_cursor30px-white.svg") 15 15, default !important;
+    cursor: -webkit-image-set(url('https://uploads-ssl.webflow.com/5db1e0797abe5c482bc85495/5dbb0541285ec24e3e57481d_cursor30px-white.svg') 1x, url('https://uploads-ssl.webflow.com/5db1e0797abe5c482bc85495/5db1e7097ffdd4441070ab58_Oval-white.svg') 2x) 15 15, auto !important;
+}
+
+.text-input {
+    resize: none;
+}
+
+.wide {
+    width: 100%;
+}
+
+.mixitup-control-active {
+    background-color: #000;
+    color: #e6e6e6;
+}
+
+.text-input:focus {
+    border-color: black !important;
+}
+
+.text-input:focus:invalid,
+input:invalid::after {
+    box-shadow: none;
+    border-color: red;
+}
+
+.text-input:invalid {
+    box-shadow: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 100px white inset !important;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .swiper-container,
+    body,
+    html {
+        height: 100%;
+    }
+
+    .rich_text ul {
+        padding-left: 17px !important;
+    }
+}
